@@ -2,16 +2,19 @@
 
 	<PropertyGroup>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
-		<RootNamespace>net_core_bootcamp_b1</RootNamespace>
+		<RootNamespace>net_core_bootcamp_b1-altan</RootNamespace>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DocumentationFile>net-core-bootcamp-b1.swagger.xml</DocumentationFile>
+		<DocumentationFile>net-core-bootcamp-b1-altan.swagger.xml</DocumentationFile>
 		<NoWarn>1701;1702;1591</NoWarn>
+		
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<DocumentationFile>net-core-bootcamp-b1.swagger.xml</DocumentationFile>
+		
+		<DocumentationFile>net-core-bootcamp-b1-altan.swagger.xml</DocumentationFile>
 		<NoWarn>1701;1702;1591</NoWarn>
 	</PropertyGroup>
 

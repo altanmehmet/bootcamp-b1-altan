@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using net_core_bootcamp_b1;
 
 namespace net_core_bootcamp_b1_altan.Controllers
@@ -23,7 +24,7 @@ namespace net_core_bootcamp_b1_altan.Controllers
 
             data.Add(model);
 
-            return Ok("{ model.Name} eklendi."); 
+            return Ok($"{ model.Name} eklendi."); 
         }
         [HttpPut("Update")]
         public IActionResult Update([FromBody]Product model)
@@ -32,21 +33,21 @@ namespace net_core_bootcamp_b1_altan.Controllers
                 return BadRequest("Id alanı boş geçilemez.");
             var rec = data.Where(x => x.Id == model.Id).FirstOrDefault();
             if (rec == null)
-                return BadRequest("{model.Id }  adlı kayıt bulunamadı.");
+                return BadRequest($"{model.Id }  adlı kayıt bulunamadı.");
             rec.Name = model.Name;
             rec.Desc = model.Desc;
             rec.Price = model.Price;
-            return Ok("{model.Id} kaydı güncellendi.");
+            return Ok($"{model.Id} kaydı güncellendi.");
         }
         [HttpDelete("Delete")]
-        public IActionResult Delete([Bind]Guid id)
+        public IActionResult Delete([BindRequired]Guid id)
             // bind?
         {
             var rec = data.Where(x => x.Id == id).FirstOrDefault();
             if (rec == null)
-                return BadRequest("{id} adlı kayıt bulunamadı.");
+                return BadRequest($"{id} adlı kayıt bulunamadı.");
             data.Remove(rec);
-            return Ok("{id} adlı kayıt silindi.");
+            return Ok($"{id} adlı kayıt silindi.");
         }
         [HttpGet("Get")]
         public IActionResult Get(string name = null)
