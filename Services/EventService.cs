@@ -17,15 +17,14 @@ namespace net_core_bootcamp_b1_altan.Services
     public class EventService : IEventService
     {
         private static readonly IList<Event> data = new List<Event>();
-
         public string Add(EventAddDto model)
         {
             var entity = new Event
             {
                 Id = Guid.NewGuid(),
-                CreatedAt = DateTime.UtcNow
-            };
-            
+            CreatedAt = DateTime.UtcNow
+        };
+
             entity.Name = model.Name;
             entity.StartDate = model.StartDate;
             entity.FinishDate = model.FinishDate;
