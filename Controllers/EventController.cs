@@ -41,10 +41,6 @@ namespace net_core_bootcamp_b1_altan.Controllers
 
             return Ok(result);
         }
-    public IActionResult Get()
-        {
-            var result = _eventService.Get();
-            return Ok(result);
-        }
+    
 }
 }

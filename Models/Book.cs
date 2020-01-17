@@ -11,7 +11,7 @@ namespace net_core_bootcamp_b1_altan.Models
         public Guid Id { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }
-        [Required,MaxLength(200)]
+        [Required]
         public string Name { get; set; }
         [Required]
         public string Author { get; set; }

@@ -11,7 +11,7 @@ namespace net_core_bootcamp_b1_altan.Services
         string Add(EventAddDto model);
         string Update(EventUpdateDto model);
         string Delete(Guid id);
-        string Get(EventGetDto model);
+         
     }
 
     public class EventService : IEventService
@@ -65,14 +65,7 @@ namespace net_core_bootcamp_b1_altan.Services
             return ($"{entity.Name} ait kayıt silindi.");
         }
 
-        public string Get(EventGetDto model)
-        {
-            var result = data.Where(x => !x.IsDeleted && x.Name == model.Name  ).FirstOrDefault();
-
-
-            
-            
-        }
+        
 
 
 
@@ -93,4 +86,3 @@ namespace net_core_bootcamp_b1_altan.Services
 
         }
     }
-}

@@ -28,26 +28,5 @@ namespace net_core_bootcamp_b1_altan.Dtos
         public Guid Id { get; set; }
 
     }
-    public class EventGetDto
-    {
-        public Guid Id { get; set; }
-        
-        public DateTime CreatedAt { get; set; }
-        
-        public string Name { get; set; }
-        
-        public DateTime StartDate { get; set; }
-        
-        public DateTime FinishDate { get; set; }
-        
-        public string Addres { get; set; }
-
-        public bool IsFree { get; set; }
-
-        public double Price { get; set; }
-        public string Subject { get; set; }
-        public string Desc { get; set; }
-
-
-    }
 }
+    

@@ -10,18 +10,18 @@ namespace net_core_bootcamp_b1_altan.Services
 
     public interface IBookService
     {
-        public string Add(BookAddDto model);
-        public string Update(BookUpdateDto model);
-        public string Delete(Guid id);
-        public IList<BookGetDto> Get();
-
+        string Add(BookAddDto model);
+        string Update(BookUpdateDto model);
+        string Delete(Guid id);
+        IList<BookGetDto> Get();
+    }
         public class BookService : IBookService
         {
-            private static readonly IList<Book> data = new List<Book>();
+        private static readonly IList<Book> data = new List<Book>();
 
             public string Add(BookAddDto model)
             {
-                var entity = new Book
+                Book entity = new Book
                 {
                     Id = Guid.NewGuid(),
                     CreatedAt = DateTime.UtcNow
@@ -33,7 +33,7 @@ namespace net_core_bootcamp_b1_altan.Services
                 entity.Price = model.Price;
 
                 data.Add(entity);
-                return model.Name + "eklendi.";
+                return "success";
             }
 
             public string Delete(Guid id)
@@ -43,7 +43,7 @@ namespace net_core_bootcamp_b1_altan.Services
                     return "Id bulunamadi";
                 entity.IsDeleted = true;
 
-                return entity.Name + "silindi";
+            return ($"{entity.Name} silindi.");
             }
 
             public IList<BookGetDto> Get()
@@ -65,9 +65,13 @@ namespace net_core_bootcamp_b1_altan.Services
                 return result;
             }
 
-            public string Update(BookUpdateDto model)
+        public string Update(BookUpdateDto model)
             {
                 var entity = data.Where(x => !x.IsDeleted && x.Id == model.Id).FirstOrDefault();
+            if (entity == null)
+                return ("Bu urune ait kayıt bulunamadı.");
+
+
                 entity.Name = model.Name;
                 entity.Author = model.Author;
                 entity.Publisher = model.Publisher;
@@ -78,7 +82,7 @@ namespace net_core_bootcamp_b1_altan.Services
             }
         }
     }
-}
+
     
         
     

@@ -5,7 +5,7 @@ namespace net_core_bootcamp_b1_altan.Dtos
 {
     public class BookAddDto
 {
-    [Required, MaxLength(200)]
+    [Required]
     public string Name { get; set; }
     [Required]
     public string Author { get; set; }
