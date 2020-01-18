@@ -8,11 +8,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using net_core_bootcamp_b1_altan.Database;
 using net_core_bootcamp_b1_altan.Services;
 
 namespace net_core_bootcamp_b1
@@ -50,7 +52,11 @@ namespace net_core_bootcamp_b1
 
 
             services.AddControllers();
+            services.AddDbContext<BootcampDbContext>(options => options
+                .UseSqlServer(Configuration.GetConnectionString("BootcampDbConnection")));
+
             services.AddSingleton<IEventService, EventService>();
+            services.AddSingleton<IBookService, BookService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
